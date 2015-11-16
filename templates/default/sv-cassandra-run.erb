@@ -32,11 +32,11 @@ exec chpst -u daemon -o 65535 \
         -XX:+UseCMSInitiatingOccupancyOnly \
         -XX:+HeapDumpOnOutOfMemoryError \
         -XX:+UseCompressedOops \
-        -Dcom.sun.management.jmxremote.port=<%= node.ele[@options[:servicename]].jmx_port %> \
+        -Dcom.sun.management.jmxremote.port=<%= node['ele'][@options['servicename']]['jmx_port'] %> \
         -Dcom.sun.management.jmxremote.ssl=false \
         -Dcom.sun.management.jmxremote.authenticate=false \
         -Dmx4jaddress=<%= @options[:listen_ip] %> \
-        -Dmx4jport=<%= node.ele[@options[:servicename]].mx4j_port %> \
+        -Dmx4jport=<%= node['ele'][@options['servicename']]['mx4j_port'] %> \
         -Dcassandra \
         -Dcassandra-foreground=yes \
         org.apache.cassandra.thrift.CassandraDaemon  2>&1

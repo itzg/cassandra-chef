@@ -46,7 +46,7 @@ file '/etc/profile.d/cql_replication_factor.sh' do
 end
 
 file '/etc/profile.d/cql_env.sh' do
-  not_if { node.roles.include?('dev') }
+  not_if { node['roles'].include?('dev') }
   owner 'root'
   group 'root'
   mode 00755

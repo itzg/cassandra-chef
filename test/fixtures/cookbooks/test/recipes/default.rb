@@ -5,4 +5,4 @@
 # License:: Apache License, Version 2.0
 #
 
-cassandra_cluster "cass"
+cassandra_cluster 'cass'

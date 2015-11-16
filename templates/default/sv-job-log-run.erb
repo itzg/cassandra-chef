@@ -1,1 +1,2 @@
-../../../ele-base/templates/default/sv-job-log-run.erb
+#!/bin/sh
+exec chpst -u daemon svlogd -l16000 -b16436 ./main

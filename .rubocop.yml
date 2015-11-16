@@ -4,4 +4,4 @@ AllCops:
   - vendor/**/*
 
 Metrics/LineLength:
-  Max: 120
+  Max: 180

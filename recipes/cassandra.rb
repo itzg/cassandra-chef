@@ -39,7 +39,8 @@ end
 
 remote_file "/usr/src/cassandra-#{node['cassandra']['version']}.tar.gz" do
   action :create_if_missing
-  source "https://#{node[:ele][:buildbot_user]}:#{node[:ele][:buildbot_password]}@#{node[:ele][:buildbot_host]}/distfiles/cassandra-builds/cassandra-#{node[:cassandra][:version]}.tar.gz"
+  source "https://#{node['ele']['buildbot_user']}:#{node['ele']['buildbot_password']}@" \
+         "#{node['ele']['buildbot_host']}/distfiles/cassandra-builds/cassandra-#{node['cassandra']['version']}.tar.gz"
   mode 00644
 end
 

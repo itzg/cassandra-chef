@@ -1,1 +1,4 @@
-../../../ele-base/templates/default/sv-job-run.erb
+#! /bin/bash
+export FQDN=`hostname -f`
+
+exec chpst -u <%= @options[:run_as] || "daemon" %> /opt/ele/bin/run-job --name <%= @options[:job_name] %> <%= @options[:args] %> <% if @options.has_key?(:job_module_path) %>--module <%= @options[:job_module_path] %><% else -%> -- <%= @options[:job_path] %> <%= @options[:job_args] if @options.has_key?(:job_args) %><% end -%> 2>&1
