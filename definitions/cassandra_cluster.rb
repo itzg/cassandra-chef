@@ -9,10 +9,10 @@ define :cassandra_cluster do
     cookbook 'cassandra'
     variables(
       cluster_type: cluster_type,
-      cass_seed_servers: node['ele'][cluster_type]['seed_servers'],
-      cluster_name: node['ele'][cluster_type]['cluster_name'],
-      listen_ip: node['ele'][cluster_type]['listen_ip'],
-      initial_token: node['ele'][cluster_type]['initial_token']
+      cass_seed_servers: node['cassandra']['seed_servers'],
+      cluster_name: node['cassandra']['cluster_name'],
+      listen_ip: node['cassandra']['listen_ip'],
+      initial_token: node['cassandra']['initial_token']
     )
   end
 
@@ -25,11 +25,11 @@ define :cassandra_cluster do
     finish_script_template_name 'cassandra'
     finish true
     restart_on_update false
-    start_down node['ele'][cluster_type]['service_down']
+    start_down node['cassandra']['service_down']
     options(
-      min_memory: node['ele'][cluster_type]['min_mem'],
-      max_memory: node['ele'][cluster_type]['max_mem'],
-      listen_ip: node['ele'][cluster_type]['listen_ip'],
+      min_memory: node['cassandra']['min_mem'],
+      max_memory: node['cassandra']['max_mem'],
+      listen_ip: node['cassandra']['listen_ip'],
       servicename: cluster_type
     )
   end

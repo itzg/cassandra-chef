@@ -2,9 +2,10 @@
 driver:
   name: rackspace
   flavor_id: performance1-2
+  public_key_path: ~/.ssh/id_rsa.pub
   rackspace_username: <%= ENV['RACKSPACE_USERNAME'] %>
   rackspace_api_key: <%= ENV['RACKSPACE_API_KEY'] %>
   rackspace_region: IAD
   require_chef_omnibus: latest
-  server_name: ci-<%= ENV['CIRCLE_PROJECT_REPONAME'] %>-<%= ENV['CIRCLE_BUILD_NUM'] %>
+  server_name: ci-<%= ENV['TRAVIS_REPO_SLUG'] %>-<%= ENV['TRAVIS_BUILD_NUMBER'] %>
   wait_for: 1200
