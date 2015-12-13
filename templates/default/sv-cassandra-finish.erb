@@ -4,12 +4,12 @@ status=$2
 servicename=<%= @options[:servicename] %>
 
 # if the local scribe we send to is in compression mode, send it compressed stuff.
-if grep -q ^thrift_compression=on <%= node['ele']['config_dir'] %>/scribe-log-client.conf; then 
+if grep -q ^thrift_compression=on /opt/ele-conf/scribe-log-client.conf; then 
   args="--compression"
 fi
 
 if [ "$servicename" != "ele-gelf-cat" ]; then
- tail -n <%= node['ele']['tail_lines'] %> ./log/main/current | /opt/ele/bin/runsv_finish.js -a 127.0.0.1:1500 -c log-<%= node.name %> -r $servicename -e $code -s $status -w /opt/ele/bin $args
+ tail -n 4 ./log/main/current | /opt/ele/bin/runsv_finish.js -a 127.0.0.1:1500 -c log-<%= node.name %> -r $servicename -e $code -s $status -w /opt/ele/bin $args
 fi
 
 # Add a line to the log file to help spot restarts.
@@ -51,7 +51,7 @@ if [ $count -lt $threshold_count ]; then
   exit 0
 elif [ $elapsed -lt $threshold_time ]; then
   # flapping
-  . <%= node['ele']['config_dir'] -%>/cronjobs/utils
+  . /opt/ele-conf/cronjobs/utils
   send_data "${servicename}_flapping,2,restarted ${count} times in ${elapsed} minutes"
   reset_cache
   exit 1

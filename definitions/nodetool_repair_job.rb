@@ -11,7 +11,7 @@ define :nodetool_repair_job, interval: nil, enabled: false do
     group 'daemon'
     options(
       job_name: "nodetool-repair-#{cluster_type}",
-      job_path: "/opt/cassandra/bin/nodetool repair -pr -h localhost -p #{node['ele'][cluster_type]['jmx_port']}",
+      job_path: "/opt/cassandra/bin/nodetool repair -pr -h localhost -p #{node['cassandra']['jmx_port']}",
       args: "--locking --interval #{interval}"
     )
   end if params[:enabled]

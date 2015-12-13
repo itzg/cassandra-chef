@@ -1,0 +1,9 @@
+language: ruby
+# bundler_args: --without integration
+cache: bundler
+sudo: true
+rvm:
+  - 2.0.0
+script: bundle exec rake style
+script: bundle exec rake spec
+script: bundle exec rake integration:cloud

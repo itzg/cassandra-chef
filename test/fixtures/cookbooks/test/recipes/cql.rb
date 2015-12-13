@@ -8,6 +8,6 @@
 include_recipe 'cassandra::cql'
 
 nodetool_repair_job 'cass' do
-  interval node.ele.cass.nodetool_repair_interval
-  enabled node.ele.cass.nodetool_repair_enabled
+  interval node['cassandra']['nodetool_repair_interval']
+  enabled node['cassandra']['nodetool_repair_enabled']
 end

@@ -1,0 +1,23 @@
+DEPENDENCIES
+  archives
+    git: https://github.com/mmi-cookbooks/archives-chef.git
+    revision: 40ed6d9b308ca2ed453fc2e5192e47aaf3f3159e
+    tag: 1.0.0
+  cassandra
+    path: .
+    metadata: true
+  java
+  runit (~> 1.7.0)
+
+GRAPH
+  apt (2.9.2)
+  archives (1.0.0)
+  cassandra (0.2.0)
+    archives (>= 0.0.0)
+    java (>= 0.0.0)
+    runit (>= 0.0.0)
+  java (1.36.0)
+    apt (>= 0.0.0)
+  packagecloud (0.1.1)
+  runit (1.7.4)
+    packagecloud (>= 0.0.0)
