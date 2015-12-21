@@ -6,11 +6,7 @@ require 'rspec/expectations'
 require 'chefspec'
 require 'chefspec/berkshelf'
 require 'chef/application'
-# require 'coveralls'
 
-# Coveralls.wear!
-
-::LOG_LEVEL = :fatal
 ::UBUNTU_OPTS = {
   platform: 'ubuntu',
   version: '14.04',
