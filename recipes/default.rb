@@ -17,7 +17,9 @@
 # limitations under the License.
 #
 
-package 'python-thrift'
+package 'python-thrift' do
+  ignore_failure true
+end
 
 remote_file "/usr/src/cql-#{node['cassandra']['cql_version']}.tar.gz" do
   action :create_if_missing
