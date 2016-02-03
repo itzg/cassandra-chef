@@ -13,10 +13,13 @@ default['cassandra']['min_mem'] = '128M'
 
 default['cassandra']['commitlog_total_space_in_mb'] = 4096
 default['cassandra']['compaction_throughput_mb_per_sec'] = 16
+default['cassandra']['concurrent_reads'] = 32
 default['cassandra']['concurrent_writes'] = 32
 default['cassandra']['hinted_handoff_enabled'] = true
 default['cassandra']['rpc_server_type'] = 'hsha'
+default['cassandra']['rpc_max_threads'] = 2048
 default['cassandra']['sliced_buffer_size_in_kb'] = 64
+default['cassandra']['thrift_max_message_length_in_mb'] = 16
 
 # Ports
 default['cassandra']['inter_dc_tcp_nodelay'] = true

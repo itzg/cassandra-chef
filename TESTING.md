@@ -4,16 +4,22 @@ Testing
 Preparation
 -----
 
-    $ bundle install
-
-And then, to install all cookbooks:
-
-    $ bundle exec berks install
+1. Install ChefDK
+2. Install ruby (gem) dependencies
+```
+chef exec bundle install
+```
+3. Install chef (cookbook) dependencies
+```
+chef exec bundle exec berks install
+```
 
 Local
 -----
+```
+chef exec rake unit
+```
 
-    $ bundle exec strainer test
 
 The above runs:
 
@@ -27,7 +33,7 @@ Chefspec tests (the interesting part) are in `spec/`.
 Integration
 -----------
 
-    $ bundle exec kitchen test
+    $ chef exec kitchen test
 
  See `.kitchen.yml` and `test/` directory for details.
 
@@ -44,3 +50,7 @@ Integration
  `sudo find /etc/default/rcS -type f -exec sed -i 's/TMPTIME=0/TMPTIME=-1/g' {} \;`
  - run `sudo reboot`,
  - wait for the machine to reboot and run `kitchen verify` again.
+
+Other Rake Tasks
+----------------
+Run `chef exec rake -T` to see other tasks.

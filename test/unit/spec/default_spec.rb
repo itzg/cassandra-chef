@@ -14,9 +14,8 @@ describe 'cassandra::default' do
     expect(chef_run).to run_execute('install_cqlsh')
   end
 
-  # it 'unpacks cql tarball' do
-  #   expect(chef_run).to create_untar_archive('cql')
-  # end
+  # untar_archive needs to define a custom matcher to be testable here
+  # e.g. https://github.com/sethvargo/chefspec#testing-lwrps
 
   it 'downloads cql tarball' do
     expect(chef_run).to create_remote_file_if_missing('/usr/src/cql-1.0.5.tar.gz')
@@ -28,5 +27,11 @@ describe 'cassandra::default' do
 
   it 'creates replication factor script file with attributes' do
     expect(chef_run).to create_file('/etc/profile.d/cql_replication_factor.sh')
+  end
+
+  it 'sets expected default attributes' do
+    expect(chef_run.node['cassandra']['concurrent_reads']).to eq(32)
+    expect(chef_run.node['cassandra']['rpc_max_threads']).to eq(2048)
+    expect(chef_run.node['cassandra']['thrift_max_message_length_in_mb']).to eq(16)
   end
 end
