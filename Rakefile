@@ -59,6 +59,9 @@ end
 desc 'All style checks'
 task style: %w(style:chef style:ruby)
 
+desc 'Style and unit tests'
+task unit: %w(style spec)
+
 desc 'All tests'
 task test: %w(style spec integration:vagrant)
 

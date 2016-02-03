@@ -13,6 +13,7 @@ end
 group :spec do
   gem 'berkshelf'
   gem 'chefspec'
+  gem 'rubocop-rspec'
 end
 
 group :integration do
