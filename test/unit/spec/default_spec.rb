@@ -1,7 +1,7 @@
 require 'chefspec'
 require_relative 'spec_helper'
 
-describe 'cassandra::default' do # rubocop:disable RSpec/DescribeClass
+describe 'cassandra::default' do
   before { stub_resources }
 
   let(:chef_run) { ChefSpec::SoloRunner.new(step_into: ['archives']).converge(described_recipe) }
