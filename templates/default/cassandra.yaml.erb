@@ -130,7 +130,7 @@ reduce_cache_capacity_to: 0.6
 # On the other hand, since writes are almost never IO bound, the ideal
 # number of "concurrent_writes" is dependent on the number of cores in
 # your system; (8 * number_of_cores) is a good rule of thumb.
-concurrent_reads: 32
+concurrent_reads: <%= node['cassandra']['concurrent_reads'] %>
 concurrent_writes: <%= node['cassandra']['concurrent_writes'] %>
 
 # Total memory to use for memtables.  Cassandra will flush the largest
@@ -223,7 +223,7 @@ rpc_server_type: <%= node['cassandra']['rpc_server_type'] %>
 # This configuration is not used for the async server.
 
 rpc_min_threads: 16
-rpc_max_threads: 2048
+rpc_max_threads: <%= node['cassandra']['rpc_max_threads'] %>
 
 # uncomment to set socket buffer sizes on rpc connections
 # rpc_send_buff_size_in_bytes:
@@ -236,7 +236,7 @@ thrift_framed_transport_size_in_mb: 15
 
 # The max length of a thrift message, including all fields and
 # internal thrift overhead.
-thrift_max_message_length_in_mb: 16
+thrift_max_message_length_in_mb: <%= node['cassandra']['thrift_max_message_length_in_mb'] %>
 
 # Set to true to have Cassandra create a hard link to each sstable
 # flushed or streamed locally in a backups/ subdirectory of the
