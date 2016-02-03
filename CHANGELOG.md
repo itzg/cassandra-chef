@@ -1,3 +1,7 @@
+# 0.2.1
+
+- Convert some additional cassandra params to attributes for tunability
+
 # 0.2.0
 
 - Rename recipes (`cql` -> `default`; `cassandra` -> `server`)
