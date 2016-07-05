@@ -3,6 +3,7 @@ define :cassandra_cluster do
 
   cluster_type = params[:name]
 
+  # TODO : move to non ele-specific path
   template "/opt/ele-conf/#{cluster_type}.yaml" do
     mode 00444
     source 'cassandra.yaml.erb'
