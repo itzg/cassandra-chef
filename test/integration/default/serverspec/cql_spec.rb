@@ -5,5 +5,5 @@
 require_relative 'spec_helper'
 
 describe package('python-thrift') do
- it { should be_installed }
+  it { should be_installed }
 end
