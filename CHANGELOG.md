@@ -1,3 +1,7 @@
+# 0.3.1
+
+Update cql_base_url link to https://storage.googleapis.com/google-code-archive-downloads/v2/apache-extras.org/cassandra-dbapi2/ since the previous link no longer resolves.
+
 # 0.2.1
 
 - Convert some additional cassandra params to attributes for tunability
