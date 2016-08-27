@@ -1,3 +1,7 @@
+# 0.3.2
+
+Remove trailing slash on cql_base_url since the new url does not support it.
+
 # 0.3.1
 
 Update cql_base_url link to https://storage.googleapis.com/google-code-archive-downloads/v2/apache-extras.org/cassandra-dbapi2/ since the previous link no longer resolves.
