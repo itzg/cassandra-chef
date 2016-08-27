@@ -2,7 +2,7 @@ require 'pathname'
 
 default['cassandra']['version'] = '20130603180240'
 default['cassandra']['cql_version']  = '1.0.5'
-default['cassandra']['cql_base_url'] = 'https://storage.googleapis.com/google-code-archive-downloads/v2/apache-extras.org/cassandra-dbapi2/'
+default['cassandra']['cql_base_url'] = 'https://storage.googleapis.com/google-code-archive-downloads/v2/apache-extras.org/cassandra-dbapi2'
 # 'http://cassandra-dbapi2.apache-extras.org.codespot.com/files/'
 # 'https://storage.googleapis.com/google-code-archive-downloads/v1/apache-extras.org/cassandra-dbapi2/'
 default['cassandra']['cassandra_syncer_version'] = '1024d7144d574f87062546f3b6cffedc7158c1ca'
