@@ -19,7 +19,9 @@
 
 include_recipe 'java'
 
-package 'numactl'
+package 'numactl' do
+  action :install
+end
 
 directory '/opt/cassandra-commitlog' do
   owner 'daemon'
@@ -36,7 +38,7 @@ directory '/var/lib/cassandra' do
 end
 
 remote_file "/usr/src/cassandra-#{node['cassandra']['version']}.tar.gz" do
-  source "https://1897ddfb466c9e3b1daa-525efbc04163a45a7d6a38d479995b34.ssl.cf2.rackcdn.com/cassandra-#{node['cassandra']['version']}.tar.gz"
+  source 'https://1897ddfb466c9e3b1daa-525efbc04163a45a7d6a38d479995b34.ssl.cf2.rackcdn.com/cassandra-20130603180240.tar.gz'
   mode 00644
 end
 
