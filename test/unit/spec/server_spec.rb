@@ -19,7 +19,7 @@ describe 'cassandra::server' do
   # end
 
   it 'downloads cassandra tarball' do
-    expect(chef_run).to create_remote_file('/usr/src/cassandra-20160921235957.tar.gz')
+    expect(chef_run).to create_remote_file('/usr/src/cassandra-20130603180240.tar.gz')
   end
 
   it 'creates properties file' do
