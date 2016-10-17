@@ -1,3 +1,7 @@
+# 0.3.4
+
+Add concurrent_compactors
+
 # 0.3.2
 
 Remove trailing slash on cql_base_url since the new url does not support it.
