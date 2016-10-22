@@ -4,6 +4,6 @@
 
 require_relative 'spec_helper'
 
-# describe package('numactl') do
-#   it { should be_installed }
-# end
+describe package('numactl') do
+  it { should be_installed }
+end
