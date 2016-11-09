@@ -1,5 +1,5 @@
 define :cassandra_cluster do
-  include_recipe 'cassandra::cassandra'
+  include_recipe 'cassandra::server'
 
   cluster_type = params[:name]
   token = params[:token] || node['cassandra']['initial_token']

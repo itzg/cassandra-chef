@@ -25,22 +25,16 @@ package 'libjna-java' do
   ignore_failure true
 end
 
-remote_file "/usr/src/cql-#{node['cassandra']['cql_version']}.tar.gz" do
-  action :create_if_missing
-  source "#{node['cassandra']['cql_base_url']}/cql-#{node['cassandra']['cql_version']}.tar.gz"
-  mode 00644
-end
-
-untar_archive 'cql' do
-  path "/usr/src/cql-#{node['cassandra']['cql_version']}.tar.gz"
-  container_path '/usr/src'
-  creates "/usr/src/cql-#{node['cassandra']['cql_version']}/setup.py"
+ark 'cql' do
+  url "#{node['cassandra']['cql_base_url']}/cql-#{node['cassandra']['cql_version']}.tar.gz"
+  version node['cassandra']['cql_version']
+  checksum '13406943020da729898d1bf6147b2a01401c5a370b4bb552af5cd7e47b6f94e6'
 end
 
 execute 'install_cqlsh' do
   creates "/usr/local/lib/python2.7/dist-packages/cql-#{node['cassandra']['cql_version']}.egg-info"
   command 'python setup.py install -f'
-  cwd "/usr/src/cql-#{node['cassandra']['cql_version']}"
+  cwd "/usr/local/cql-#{node['cassandra']['cql_version']}"
 end
 
 file '/etc/profile.d/cql_replication_factor.sh' do

@@ -5,6 +5,7 @@ default['cassandra']['cql_version']  = '1.0.5'
 default['cassandra']['cql_base_url'] = 'https://storage.googleapis.com/google-code-archive-downloads/v2/apache-extras.org/cassandra-dbapi2'
 # 'http://cassandra-dbapi2.apache-extras.org.codespot.com/files/'
 # 'https://storage.googleapis.com/google-code-archive-downloads/v1/apache-extras.org/cassandra-dbapi2/'
+default['cassandra']['checksum'] = '4d5395b22d6684c98ec7c7c64c95e0ff67eea468a09f8a0bfc4d3062bb1c1766'
 default['cassandra']['cassandra_syncer_version'] = '1024d7144d574f87062546f3b6cffedc7158c1ca'
 
 default['cassandra']['cluster_name'] = 'data'

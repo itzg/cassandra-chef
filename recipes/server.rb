@@ -35,24 +35,17 @@ directory '/var/lib/cassandra' do
   recursive true
 end
 
-remote_file "/usr/src/cassandra-#{node['cassandra']['version']}.tar.gz" do
-  source "https://1897ddfb466c9e3b1daa-525efbc04163a45a7d6a38d479995b34.ssl.cf2.rackcdn.com/cassandra-#{node['cassandra']['version']}.tar.gz"
-  mode 00644
-end
-
-untar_archive 'cassandra' do
-  path "/usr/src/cassandra-#{node['cassandra']['version']}.tar.gz"
-  container_path '/opt'
-  creates "/opt/cassandra-#{node['cassandra']['version']}/lib"
+ark 'cassandra' do
+  url "https://1897ddfb466c9e3b1daa-525efbc04163a45a7d6a38d479995b34.ssl.cf2.rackcdn.com/cassandra-#{node['cassandra']['version']}.tar.gz"
+  version node['cassandra']['version']
+  checksum node['cassandra']['checksum']
+  prefix_root '/opt'
+  prefix_home '/opt'
 end
 
 template '/opt/ele-conf/cassandra-log4j-server.properties' do
   mode 00644
   source 'log4j-server.properties.erb'
-end
-
-link '/opt/cassandra' do
-  to "/opt/cassandra-#{node['cassandra']['version']}"
 end
 
 link '/var/lib/cassandra/commitlog' do
