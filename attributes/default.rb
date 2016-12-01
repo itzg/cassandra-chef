@@ -21,6 +21,7 @@ default['cassandra']['rpc_server_type'] = 'hsha'
 default['cassandra']['rpc_max_threads'] = 2048
 default['cassandra']['sliced_buffer_size_in_kb'] = 64
 default['cassandra']['thrift_max_message_length_in_mb'] = 16
+default['cassandra']['in_memory_compaction_limit_in_mb'] = 64
 
 # Ports
 default['cassandra']['inter_dc_tcp_nodelay'] = true

@@ -262,7 +262,7 @@ column_index_size_in_kb: 64
 # Size limit for rows being compacted in memory.  Larger rows will spill
 # over to disk and use a slower two-pass compaction process.  A message
 # will be logged specifying the row key.
-in_memory_compaction_limit_in_mb: 64
+in_memory_compaction_limit_in_mb: <%= node['cassandra']['in_memory_compaction_limit_in_mb'] %>
 
 # Number of simultaneous compactions to allow, NOT including
 # validation "compactions" for anti-entropy repair.  Simultaneous
