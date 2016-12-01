@@ -21,6 +21,10 @@ package 'python-thrift' do
   ignore_failure true
 end
 
+package 'libjna-java' do
+  ignore_failure true
+end
+
 remote_file "/usr/src/cql-#{node['cassandra']['cql_version']}.tar.gz" do
   action :create_if_missing
   source "#{node['cassandra']['cql_base_url']}/cql-#{node['cassandra']['cql_version']}.tar.gz"
