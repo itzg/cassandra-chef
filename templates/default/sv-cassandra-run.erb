@@ -5,9 +5,10 @@ CASSANDRA_BIN=$CASSANDRA_HOME/build/classes
 CASSANDRA_BIN=$CASSANDRA_BIN:$CASSANDRA_HOME/build/classes/main
 CASSANDRA_BIN=$CASSANDRA_BIN:$CASSANDRA_HOME/build/classes/thrift
 CASSANDRA_CONF=/opt/ele-conf/conf
+JNA_JAR=/usr/share/java/jna.jar
 
 # The java classpath (required)
-CLASSPATH=$CASSANDRA_CONF:$CASSANDRA_BIN:$CASSANDRA_HOME/lib/*
+CLASSPATH=$CASSANDRA_CONF:$CASSANDRA_BIN:$CASSANDRA_HOME/lib/*:$JNA_JAR
 
 ulimit -n 65535
 ulimit -l unlimited
