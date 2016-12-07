@@ -24,13 +24,15 @@ exec chpst -u daemon -o 65535 \
         -javaagent:${CASSANDRA_HOME}/lib/jamm-0.2.5.jar \
         -Xms<%= @options[:min_memory] %> \
         -Xmx<%= @options[:max_memory] %> \
-        -XX:+UseParNewGC \
-        -XX:+UseConcMarkSweepGC \
-        -XX:+CMSParallelRemarkEnabled \
-        -XX:SurvivorRatio=8 \
-        -XX:MaxTenuringThreshold=1 \
-        -XX:CMSInitiatingOccupancyFraction=75 \
-        -XX:+UseCMSInitiatingOccupancyOnly \
+        -XX:+UseG1GC \
+        -XX:MaxGCPauseMillis=500 \
+        -XX:G1RSetUpdatingPauseTimePercent=5 \
+        -XX:+ParallelRefProcEnabled \
+        -XX:+AlwaysPreTouch \
+        -XX:+UseTLAB \
+        -XX:+ResizeTLAB \
+        -XX:InitiatingHeapOccupancyPercent=25 \
+        -XX:-UseBiasedLocking \
         -XX:+HeapDumpOnOutOfMemoryError \
         -XX:+UseCompressedOops \
         -Dcom.sun.management.jmxremote.port=<%= node['cassandra']['jmx_port'] %> \
