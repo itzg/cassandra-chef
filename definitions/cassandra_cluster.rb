@@ -2,6 +2,7 @@ define :cassandra_cluster do
   include_recipe 'cassandra::cassandra'
 
   cluster_type = params[:name]
+  token = params[:token] || node['cassandra']['initial_token']
 
   # TODO : move to non ele-specific path
   template "/opt/ele-conf/#{cluster_type}.yaml" do
@@ -13,7 +14,7 @@ define :cassandra_cluster do
       cass_seed_servers: node['cassandra']['seed_servers'],
       cluster_name: node['cassandra']['cluster_name'],
       listen_ip: node['cassandra']['listen_ip'],
-      initial_token: node['cassandra']['initial_token']
+      initial_token: token
     )
   end
 
