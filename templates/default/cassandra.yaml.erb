@@ -9,6 +9,7 @@
 # one logical cluster from joining another.
 cluster_name: <%= @cluster_name %>
 
+<% if @initial_token -%>
 # You should always specify InitialToken when setting up a production
 # cluster for the first time, and often when adding capacity later.
 # The principle is that each node should be given an equal slice of
@@ -20,6 +21,7 @@ cluster_name: <%= @cluster_name %>
 # available, such as is the case with a new cluster, it will pick
 # a random token, which will lead to hot spots.
 initial_token: <%= @initial_token %>
+<% end -%>
 
 # See http://wiki.apache.org/cassandra/HintedHandoff
 hinted_handoff_enabled: <%= node['cassandra']['hinted_handoff_enabled'] %>
