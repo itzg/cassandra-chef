@@ -40,7 +40,7 @@ end
 file '/etc/profile.d/cql_replication_factor.sh' do
   owner 'root'
   group 'root'
-  mode 00755
+  mode 0o0755
   content 'export REPLICATION_FACTOR=5'
   action :create
 end
@@ -49,6 +49,6 @@ file '/etc/profile.d/cql_env.sh' do
   not_if { node['roles'].include?('dev') }
   owner 'root'
   group 'root'
-  mode 00755
+  mode 0o0755
   content %(CQLSHARGS="127.0.0.10 9170"\n\nexport CQLSHARGS)
 end

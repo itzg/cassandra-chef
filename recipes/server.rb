@@ -24,14 +24,14 @@ package 'numactl'
 directory '/opt/cassandra-commitlog' do
   owner 'daemon'
   group 'daemon'
-  mode 00755
+  mode 0o0755
   recursive true
 end
 
 directory '/var/lib/cassandra' do
   owner 'daemon'
   group 'daemon'
-  mode 00755
+  mode 0o0755
   recursive true
 end
 
@@ -44,7 +44,7 @@ ark 'cassandra' do
 end
 
 template '/opt/ele-conf/cassandra-log4j-server.properties' do
-  mode 00644
+  mode 0o0644
   source 'log4j-server.properties.erb'
 end
 
