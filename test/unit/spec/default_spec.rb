@@ -14,8 +14,8 @@ describe 'cassandra::default' do
     expect(chef_run).to run_execute('install_cqlsh')
   end
 
-  it 'downloads cql tarball' do
-    expect(chef_run).to create_remote_file_if_missing('/var/cache/chef/cql-1.0.5.tar.gz')
+  it 'ark install cql tarball' do
+    expect(chef_run).to install_ark('/var/cache/chef/cql-1.0.5.tar.gz')
   end
 
   it 'creates cql environment script file with attributes' do

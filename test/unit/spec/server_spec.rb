@@ -14,8 +14,8 @@ describe 'cassandra::server' do
     expect(chef_run).to install_package('numactl')
   end
 
-  it 'downloads cassandra tarball' do
-    expect(chef_run).to create_remote_file('/usr/src/cassandra-20160921235957.tar.gz')
+  it 'ark install cassandra tarball' do
+    expect(chef_run).to install_ark('/usr/src/cassandra-20160921235957.tar.gz')
   end
 
   it 'creates properties file' do
