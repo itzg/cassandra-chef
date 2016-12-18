@@ -4,7 +4,7 @@ require_relative 'spec_helper'
 describe 'cassandra::default' do
   before { stub_resources }
 
-  let(:chef_run) { ChefSpec::SoloRunner.new(step_into: ['archives']).converge(described_recipe) }
+  let(:chef_run) { ChefSpec::SoloRunner.new(step_into: ['ark']).converge(described_recipe) }
 
   it 'installs package' do
     expect(chef_run).to install_package('python-thrift')
@@ -14,11 +14,8 @@ describe 'cassandra::default' do
     expect(chef_run).to run_execute('install_cqlsh')
   end
 
-  # untar_archive needs to define a custom matcher to be testable here
-  # e.g. https://github.com/sethvargo/chefspec#testing-lwrps
-
-  it 'downloads cql tarball' do
-    expect(chef_run).to create_remote_file_if_missing('/usr/src/cql-1.0.5.tar.gz')
+  it 'ark install cql tarball' do
+    expect(chef_run).to install_ark('/var/cache/chef/cql-1.0.5.tar.gz')
   end
 
   it 'creates cql environment script file with attributes' do

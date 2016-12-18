@@ -24,35 +24,28 @@ package 'numactl'
 directory '/opt/cassandra-commitlog' do
   owner 'daemon'
   group 'daemon'
-  mode 00755
+  mode 0o0755
   recursive true
 end
 
 directory '/var/lib/cassandra' do
   owner 'daemon'
   group 'daemon'
-  mode 00755
+  mode 0o0755
   recursive true
 end
 
-remote_file "/usr/src/cassandra-#{node['cassandra']['version']}.tar.gz" do
-  source "https://1897ddfb466c9e3b1daa-525efbc04163a45a7d6a38d479995b34.ssl.cf2.rackcdn.com/cassandra-#{node['cassandra']['version']}.tar.gz"
-  mode 00644
-end
-
-untar_archive 'cassandra' do
-  path "/usr/src/cassandra-#{node['cassandra']['version']}.tar.gz"
-  container_path '/opt'
-  creates "/opt/cassandra-#{node['cassandra']['version']}/lib"
+ark 'cassandra' do
+  url "https://1897ddfb466c9e3b1daa-525efbc04163a45a7d6a38d479995b34.ssl.cf2.rackcdn.com/cassandra-#{node['cassandra']['version']}.tar.gz"
+  version node['cassandra']['version']
+  checksum node['cassandra']['checksum']
+  prefix_root '/opt'
+  prefix_home '/opt'
 end
 
 template '/opt/ele-conf/cassandra-log4j-server.properties' do
-  mode 00644
+  mode 0o0644
   source 'log4j-server.properties.erb'
-end
-
-link '/opt/cassandra' do
-  to "/opt/cassandra-#{node['cassandra']['version']}"
 end
 
 link '/var/lib/cassandra/commitlog' do

@@ -1,3 +1,7 @@
+# 0.4.0
+
+Move to `ark` cookbook for archives
+
 # 0.3.4
 
 Add concurrent_compactors

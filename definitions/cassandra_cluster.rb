@@ -1,12 +1,12 @@
 define :cassandra_cluster do
-  include_recipe 'cassandra::cassandra'
+  include_recipe 'cassandra::server'
 
   cluster_type = params[:name]
   token = params[:token] || node['cassandra']['initial_token']
 
   # TODO : move to non ele-specific path
   template "/opt/ele-conf/#{cluster_type}.yaml" do
-    mode 00444
+    mode 0o0444
     source 'cassandra.yaml.erb'
     cookbook 'cassandra'
     variables(
