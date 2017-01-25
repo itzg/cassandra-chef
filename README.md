@@ -2,4 +2,4 @@
 
 # Cassandra Chef
 
-Provides are Chef Definition resource `cassandra_cluster` and `nodetool_repair_job`.
+Provides our Chef Definition resources `cassandra_cluster` and `nodetool_repair_job`.
