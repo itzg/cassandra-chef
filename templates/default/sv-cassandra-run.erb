@@ -25,6 +25,7 @@ exec chpst -u daemon -o 65535 \
         -Xms<%= @options[:min_memory] %> \
         -Xmx<%= @options[:max_memory] %> \
         -XX:+UseG1GC \
+        -XX:+UseStringDeduplication \
         -XX:MaxGCPauseMillis=500 \
         -XX:G1RSetUpdatingPauseTimePercent=5 \
         -XX:+ParallelRefProcEnabled \
